@@ -10,11 +10,11 @@
     <add key="ClientValidationEnabled" value="true" />
     <add key="UnobtrusiveJavaScriptEnabled" value="true" />
     <add key="FirmNo" value="6" />
-    <add key="LOGO.USERNAME" value="" />
-    <add key="LOGO.PASSWORD" value="" />
-    <add key="Login.UserName" value="" />
-    <add key="Login.Password" value="" />
-    <add key="Logo.PayplanCode" value="" />
+    <add key="LOGO.USERNAME" value="LOGO" />
+    <add key="LOGO.PASSWORD" value="LOGO" />
+    <add key="Login.UserName" value="admin" />
+    <add key="Login.Password" value="Mt353!." />
+    <add key="Logo.PayplanCode" value="00" />
     <add key="EPPlus:ExcelPackage.LicenseContext" value="NonCommercial" />
   </appSettings>
   <!--
