@@ -1,0 +1,125 @@
+﻿
+@{
+    Layout = null;
+    var hasError = !string.IsNullOrEmpty(ViewBag.Error);
+    string returnUrl = ViewBag.returnUrl;
+    var title = "Kullanıcı Giriş Ekranı ";
+}
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="tr">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>@title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+
+    <link href="~/content/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/content/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/content/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+
+
+    <link href="~/Content/layout/login-soft.css" rel="stylesheet" />
+    <link href="~/Content/layout/login3.css" rel="stylesheet" />
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="~/content/assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css" />
+    <link href="~/content/assets/global/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="~/content/layout/css/layout.css" rel="stylesheet" type="text/css" />
+    <link id="style_color" href="~/content/layout/css/themes/default.css" rel="stylesheet" type="text/css" />
+    <link href="~/content/layout/css/custom.css" rel="stylesheet" type="text/css" />
+
+    <!-- END THEME STYLES -->
+
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="login">
+    <!-- BEGIN LOGO -->
+    <div class="logo">
+        <a href="@Url.Action("Login","Account")">
+            <img src="~/Content/logo.PNG" alt="" height="130" alt="Portal Girişi" />
+        </a>
+
+    </div>
+    <!-- END LOGO -->
+    <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+    <div class="menu-toggler sidebar-toggler">
+    </div>
+    <!-- END SIDEBAR TOGGLER BUTTON -->
+    <!-- BEGIN LOGIN -->
+    <div class="content">
+        <!-- BEGIN LOGIN FORM -->
+        @using (Html.BeginForm("Logon", "Account", FormMethod.Post, new { @class = "login-form" }))
+        {
+            @Html.Hidden("returnUrl", returnUrl)
+
+            <h3 class="form-title">Giriş Yap.</h3>
+            if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger @(hasError?"":"display-hide")">
+                    <button class="close" data-close="alert"></button>
+                    <span>
+
+
+                        @ViewBag.Error
+
+                    </span>
+                </div>
+            }
+            <div class="form-group">
+                <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                <label class="control-label visible-ie8 visible-ie9">Kullanıcı Adı</label>
+                <div class="input-icon">
+                    <i class="fa fa-user"></i>
+                    <input type="text" class="form-control placeholder-no-fix" required placeholder="Kullanıcı Adı" name="username" id="UserName" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">Şifre</label>
+                <div class="input-icon">
+                    <i class="fa fa-lock"></i>
+                    <input type="password" class="form-control placeholder-no-fix" required placeholder="Şifre" name="password" id="Password" />
+                </div>
+            </div>
+            <div class="form-actions">
+                @*<label class="checkbox">
+                        @Html.CheckBox("Rememberme", new { @value = true }) Beni Hatırla
+                    </label>*@
+                <button type="submit" class="btn blue btn-block">
+                    Giriş Yap <i class="m-icon-swapright m-icon-white"></i>
+                </button>
+            </div>
+        }
+        <!-- END LOGIN FORM -->
+    </div>
+    <!-- END LOGIN -->
+    <!-- BEGIN COPYRIGHT -->
+    <div class="copyright">
+        <br />
+        @DateTime.Now.Year &copy; @title
+    </div>
+    <!-- END COPYRIGHT -->
+    <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- BEGIN CORE PLUGINS -->
+    <!--[if lt IE 9]>
+
+    <![endif]-->
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>
